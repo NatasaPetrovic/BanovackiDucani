@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
-  belongs_to :info
+                          
+  has_many :user_categories
+  has_many :categories, through: :user_categories
+  
+ 
+ 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,

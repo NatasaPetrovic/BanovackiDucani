@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-    has_and_belongs_to_many :infos
+    has_many :user_categories
+    has_many :users, through: :user_categories
 end
