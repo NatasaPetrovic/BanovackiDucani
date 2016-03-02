@@ -7,6 +7,9 @@ gem 'rails', '4.2.5'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+
+gem 'carrierwave', '~> 0.10.0' #image upload
+gem 'mini_magick', '~> 4.3' #resizing images
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
