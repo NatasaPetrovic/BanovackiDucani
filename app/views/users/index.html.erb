@@ -1,0 +1,16 @@
+<% @users.each do |user| %>
+        <ul class="listing">
+            <div class="row">
+                <div class= "well col-md-4 col-md-offset-4">
+                    <li><%= user.name %></li>
+                    <li><%= user.address %></li>
+                    <li><%= user.email %></li>
+                    <li>
+                        <% user.images.each do |image| %>
+                            <%= image_tag image.image_url :thumb %>
+                        <% end %>
+                        </li>
+                </div>
+            </div>
+        </ul>
+    <% end %>
