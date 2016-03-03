@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302091523) do
+ActiveRecord::Schema.define(version: 20160303165251) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,25 @@ ActiveRecord::Schema.define(version: 20160302091523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+  end
+
+  create_table "premium_infos", force: :cascade do |t|
+    t.string   "first_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "last_name"
+    t.string   "description"
+    t.string   "personal_phone"
+    t.string   "personal_email"
+    t.string   "website"
+    t.string   "working_hours"
+    t.integer  "user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
@@ -57,9 +76,11 @@ ActiveRecord::Schema.define(version: 20160302091523) do
     t.string   "name"
     t.string   "phone"
     t.string   "address"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end

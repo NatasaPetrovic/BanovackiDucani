@@ -45,8 +45,40 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
+      <% if @kind == 'free'%>
+          Ha!
+      <% else %>
+      <div class="form-group">
+        <%= f.fields_for :premium_info, PremiumInfo.new do |info| %>
+          <%= info.label :description %>
+          <%= info.text_field :description, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :first_name %>
+          <%= info.text_field :first_name, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :last_name %>
+          <%= info.text_field :last_name, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :working_hours %>
+          <%= info.text_field :working_hours, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :personal_phone %>
+          <%= info.text_field :personal_phone, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :personal_email %>
+          <%= info.text_field :personal_email, autofocus: true, class: "form-control" %>
+          
+           <%= info.label :website %>
+          <%= info.text_field :website, autofocus: true, class: "form-control" %>
+        <% end %>
+      </div>
+      
+     <% end %>
       <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
-<%= render "devise/shared/links" %>
+
+
+
+

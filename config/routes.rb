@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :images
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
 devise_scope :user do
   get "sign_up", to: "users/registrations#new"
 end
+
+
 
 resources :categories
 resources :users

@@ -20,7 +20,7 @@
             <div class="bottom">
                 <div class="row" >
 
-                <%= link_to new_user_registration_path do%>
+                <%= link_to new_user_registration_path(:kind => 'free')  do %>
                 <div class="bottom-buttons col-md-6 col-sm-6 col-xs-12">
                     <div class="inner">
                     besplatan portal
@@ -29,11 +29,12 @@
                     <% end %>
 
 
-                <a href="#"><div class="bottom-buttons col-md-6 col-sm-6 col-xs-12">
+                <%= link_to new_user_registration_path(:kind => 'premium')  do %><div class="bottom-buttons col-md-6 col-sm-6 col-xs-12">
                     <div class="inner">
                     premijum portal
                     </div>
-                    </div></a>
+                    </div>
+                    <% end %>
 
 
                 </div>
