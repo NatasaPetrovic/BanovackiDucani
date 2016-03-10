@@ -22,6 +22,11 @@
         <%= f.text_field :address, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :working_hours %>
+        <%= f.text_field :working_hours, autofocus: true, class: "form-control" %>
+      </div>
+       
+      <div class="form-group">
         <%= f.fields_for :images, Image.new do |image| %>
           <%= image.label :image %>
           <%= image.file_field :image, autofocus: true, class: "form-control" %>
@@ -46,8 +51,15 @@
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
       <% if @kind == 'free'%>
-          Ha!
+          <div class="form-group">
+        <%= f.label :role_id %>
+        <%= f.hidden_field :role_id, :value => 5, class: "form-control" %>
+      </div>
       <% else %>
+      <div class="form-group">
+        <%= f.label :role_id %>
+        <%= f.hidden_field :role_id, :value => 6, class: "form-control" %>
+      </div>
       <div class="form-group">
         <%= f.fields_for :premium_info, PremiumInfo.new do |info| %>
           <%= info.label :description %>
@@ -59,8 +71,7 @@
            <%= info.label :last_name %>
           <%= info.text_field :last_name, autofocus: true, class: "form-control" %>
           
-           <%= info.label :working_hours %>
-          <%= info.text_field :working_hours, autofocus: true, class: "form-control" %>
+          
           
            <%= info.label :personal_phone %>
           <%= info.text_field :personal_phone, autofocus: true, class: "form-control" %>

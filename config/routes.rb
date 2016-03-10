@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'welcome#home'
    get 'welcome/home', to: 'welcome#home'
+   get 'welcome/results', to: 'welcome#results'
 
 
 devise_scope :user do

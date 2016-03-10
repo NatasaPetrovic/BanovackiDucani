@@ -1,0 +1,113 @@
+<div class="container" id="sheet">
+
+            <div id="head">
+                Rezultat pretrage
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 kateg-div">
+                    <div class="kat-head">
+                        Kategorije
+                    </div>
+                    <a href="#"><div class="kat-res">Auto oprema i servisi</div></a>
+                    <a href="#"><div class="kat-res">Butici</div></a>
+                    <a href="#"><div class="kat-res">Građevinarstvo, materijali i alati</div></a>
+                    <a href="#"><div class="kat-res">Edukacija</div></a>
+                    <a href="#"><div class="kat-res">Finansijske usluge</div></a>
+                    <a href="#"><div class="kat-res">Informacione tehnologije</div></a>
+                    <a href="#"><div class="kat-res">Knjižare, kopirnice i foto radnje</div></a>
+                    <a href="#"><div class="kat-res">Kozmetički saloni</div></a>
+                    <a href="#"><div class="kat-res">Majstori i majstorice</div></a>
+                    <a href="#"><div class="kat-res">Nameštaj</div></a>
+                    <a href="#"><div class="kat-res">Organizacije i udruženja</div></a>
+                    <a href="#"><div class="kat-res">Poljoprivreda</div></a>
+                    <a href="#"><div class="kat-res">Pravne usluge</div></a>  
+                    <a href="#"><div class="kat-res">Sport</div></a>
+                    <a href="#"><div class="kat-res">Tehnika</div></a>
+                    <a href="#"><div class="kat-res">Transport</div></a>
+                    <a href="#"><div class="kat-res">Trgovina i trgovinski objekti</div></a>
+                    <a href="#"><div class="kat-res">Turizam</div></a> 
+                    <a href="#"><div class="kat-res">Ugostiteljstvo</div></a>
+                    <a href="#"><div class="kat-res">Zdravlje</div></a>
+                </div>
+            
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="kat-head">
+                        Rezultat za <%= params[:search] %>
+                    </div>
+                    
+                    <% @users.each do |user|%>
+                        <% if user.role_id == 6 %>
+                            <div class="card-prem card">
+                        
+                                <div class="row">
+                            
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <!--<img src="Images/svg-15-64.png" style="position:absolute;left:18;top:-15px;">-->
+                                        <% user.images.first do |image|%>
+                                            <%= image_tag image.image_url, :class => "card-image" %>
+                                        <% end %>
+                                       
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 card-text">
+                                        <div class="card-header col-xs-12" > <%= user.name %> </div>
+                                            <div class="card-info col-md-9">
+                                                <ul class="card-ul">
+                                                    <li><span style="float:left" class="glyphicon glyphicon-envelope"></span> <%= user.address %> </li>
+                                                    <li><span class="glyphicon glyphicon-envelope"></span><%= user.phone %></li>
+                                                    <li><span class="glyphicon glyphicon-envelope"></span> <%= user.email %></li>
+                                                    <li><span class="glyphicon glyphicon-time"></span> <%= user.working_hours %></li>
+                                                    <li><span class="glyphicon glyphicon-globe"></span> <%= link_to user.premium_info.website %></li> 
+                                                    
+                                                    
+                                                </ul>
+                                    
+                                            </div>
+                                              <div class="info-btns col-md-3 col-sm-12 col-xs-12">
+                                                <%= link_to "#" do %><div class="moreInfo col-md-12 col-sm-6 col-xs-12">Više informacija</div><% end %>
+                                                <%= link_to "#" do %><div class="moreInfo col-md-12 col-md-offset-0 col-sm-3 col-sm-offset-3 col-xs-12 ">Mapa</div><% end %>
+                                    
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% elsif user.role_id == 5 %>
+                            <div class="card">
+                        
+                                <div class="row">
+                            
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <% user.images.each do |image|%>
+                                            <%= image_tag image.image_url, :class => "card-image" %>
+                                        <% end %>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 card-text">
+                                        <div class="card-header col-md-12 col-sm-12 col-xs-12" > Modna kuća "St. George" </div>
+                                            <div class="card-info col-md-9">
+                                                <ul class="card-ul">
+                                                    <li><span class="glyphicon glyphicon-map-marker"></span> Svetosavska 102, Novi&nbsp;Banovci</li>
+                                                    <li><span class="glyphicon glyphicon-earphone"></span> 060 223439213&emsp;022 341555</li>
+                                                    <li><span class="glyphicon glyphicon-envelope"></span> st.george@hotmail.com</li>
+                                                    <li><span class="glyphicon glyphicon-time"></span> Pon-Pet: 08-19; Sub: 10-16;</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-btns col-md-3 col-sm-3 col-xs-3 pull-right">
+                                                <a href="#"><div class="moreInfo">Mapa</div></a>
+                                    
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        <% else %>
+                        hi
+                        <% end %>
+                    <% end %>
+                    
+                  
+                
+            </div>
+            
+        </div> <!--Container nb2 End-->
+       
