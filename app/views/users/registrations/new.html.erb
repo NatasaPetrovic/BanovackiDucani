@@ -1,5 +1,5 @@
 <%= bootstrap_devise_error_messages! %>
-<div class="panel panel-default">
+<div class="col-md-6 licniPodaci">
   <div class="panel-heading">
     <h4><%= t('.sign_up', :default => "Sign up") %></h4>
   </div>
@@ -19,11 +19,72 @@
       </div>
       <div class="form-group">
         <%= f.label :address %>
-        <%= f.text_field :address, autofocus: true, class: "form-control" %>
+        <input type="text" id="street" placeholder="Ulica" />
+        <input type="text" id="number" placeholder="Broj" />
+        
+        <%= javascript_include_tag "specific/form_address.js" %>
+        <%= f.hidden_field :address, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :working_hours %>
-        <%= f.text_field :working_hours, autofocus: true, class: "form-control" %>
+        <br/>
+        <input type="radio" id="not_fixed" name="fixed" value="not_fixed" checked>Nije fiksno<br/>
+        <input type="radio" id="fixed" name="fixed" value="fixed">Fiksno<br/>
+        
+        <div id="working_hours">
+        <label>Radni dani od</label>
+        <select id="select_hours_from" class="form-control input-mini">
+           <%= javascript_include_tag "specific/form_working_hours.js" %>
+           <script type="text/javascript" >
+           $("#select_hours_from").working_hours(9);
+           
+           </script>
+        </select>
+           <span>do</span>
+           <select id="select_hours_to" class="form-control input-mini">
+           <script type="text/javascript" >
+            $("#select_hours_to").working_hours(21);
+           </script>
+           
+        </select> 
+        <br/><br/>
+        
+         <label>Subota od</label>
+        <select id="select_hours_from_saturday" class="form-control input-mini">
+           <%= javascript_include_tag "specific/form_working_hours.js" %>
+           <script type="text/javascript" >
+           $("#select_hours_from_saturday").working_hours(10);
+           
+           </script>
+        </select>
+           <span>do</span>
+           <select id="select_hours_to_saturday" class="form-control input-mini">
+           <script type="text/javascript" >
+            $("#select_hours_to_saturday").working_hours(18);
+           </script>
+           
+        </select> 
+        <br/><br/>
+        <label>Nedelja od</label>
+        <select id="select_hours_from_sunday" class="form-control input-mini">
+           <%= javascript_include_tag "specific/form_working_hours.js" %>
+           <script type="text/javascript" >
+           $("#select_hours_from_sunday").working_hours(10);
+           
+           </script>
+        </select>
+           <span>do</span>
+           <select id="select_hours_to_sunday" class="form-control input-mini">
+           <script type="text/javascript" >
+            $("#select_hours_to_sunday").working_hours(18);
+           </script>
+           
+        </select> 
+        
+        <input id="no_work" type="checkbox">Ne radimo
+       </div>
+        
+        <%= f.hidden_field :working_hours %>
       </div>
        
       <div class="form-group">
@@ -52,12 +113,12 @@
       </div>
       <% if @kind == 'free'%>
           <div class="form-group">
-        <%= f.label :role_id %>
+       <!-- <%= f.label :role_id %>-->
         <%= f.hidden_field :role_id, :value => 5, class: "form-control" %>
       </div>
       <% else %>
       <div class="form-group">
-        <%= f.label :role_id %>
+       <!-- <%= f.label :role_id %>-->
         <%= f.hidden_field :role_id, :value => 6, class: "form-control" %>
       </div>
       <div class="form-group">
@@ -83,6 +144,7 @@
           <%= info.text_field :website, autofocus: true, class: "form-control" %>
         <% end %>
       </div>
+   
       
      <% end %>
       <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>

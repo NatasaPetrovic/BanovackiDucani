@@ -35,6 +35,7 @@ class CategoriesController < ApplicationController
     
     def show
         @category = Category.find(params[:id])
+        @category_users = @category.users
     end
     
     private

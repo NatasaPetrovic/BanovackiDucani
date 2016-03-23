@@ -6,10 +6,7 @@ before_filter :configure_account_update_params, only: [:update]
   # GET /resource/sign_up
    def new
      if params[:kind] == 'free'
-     
           @kind = 'free'
-     
-      
      end
      super
      
@@ -19,6 +16,7 @@ before_filter :configure_account_update_params, only: [:update]
    def create
    
      super
+    
    end
 
   # GET /resource/edit
@@ -63,6 +61,7 @@ before_filter :configure_account_update_params, only: [:update]
   # The path used after sign up.
    def after_sign_up_path_for(resource)
      super(resource)
+     redirect_to root_path
    end
 
   # The path used after sign up for inactive accounts.

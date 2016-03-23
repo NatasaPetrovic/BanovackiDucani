@@ -16,7 +16,6 @@ devise_scope :user do
 end
 
 
-
 resources :categories
 resources :users
 #get 'signup', to: 'users#new'

@@ -2,7 +2,12 @@
 <div align="center">
   
     <div class="row">
+        <% if user_signed_in? and current_user.role_id < 5 %>
         <span class="badge"><%= link_to "Edit Category", edit_category_path(@category)%></span>
+        <% end %>
+         <div class="col-md-8 col-sm-12 col-xs-12">
+        <%= render 'welcome/users', obj: @category_users %>
+        </div>
     </div>
     <br/>
    
