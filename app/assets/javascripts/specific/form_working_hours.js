@@ -17,11 +17,16 @@ jQuery.fn.extend({
  }
 });
 
-
+$("#not_fixed").load(function() {
+  $("#working_hours").hide();
+  $(".twice").hide();
+});
 $(document).ready(function() {
  
-$("#working_hours").hide();
-  
+  $("#working_hours").hide();
+  $(".twice").hide();
+/************** Klik na dugme ne radimo nedeljom****************/
+
 $("#no_work").on('change', function() {
  
  if($(this).is(":checked"))
@@ -33,11 +38,10 @@ $("#no_work").on('change', function() {
  else {
   $("#select_hours_from_sunday").removeAttr("disabled");
   $("#select_hours_to_sunday").removeAttr("disabled");
- 
-  
  }
  
 });
+/************** Fiksno radno vreme ****************/
 
 $("#fixed").on('change', function() {
    $("#working_hours").show();
@@ -47,22 +51,51 @@ $("#not_fixed").on('change', function() {
    $("#working_hours").hide();
 });
 
-$("#user_password").focus(function() {  //kad se klikne na dugme Snimi koje jos ne postoji
+/************** Snimi radno vreme ****************/
+
+$("#save_working_hours").click(function() {  
  
-  
- var working_hours = "Ponedeljak-petak: " + $("#select_hours_from").val() + " - " + $("#select_hours_to").val() + ";"
-                   + "Subota: " + $("#select_hours_from_saturday").val() + " - " + $("#select_hours_to_saturday").val() + ";";
+  if($("#twice_working_hours").val() == "Dvokratno") {
+   var working_hours = "Ponedeljak-petak: " + $("#select_hours_from").val() + " - " + $("#select_hours_to").val() + ";"
+                     + "Subota: " + $("#select_hours_from_saturday").val() + " - " + $("#select_hours_to_saturday").val() + ";";
                    
- if($("#no_work").is(":checked"))
-  working_hours += "Nedelja: ne radi";
- else
-  working_hours += "Nedelja: " + $("#select_hours_from_sunday").val() + " - " + $("#select_hours_to_sunday").val();
+   if($("#no_work").is(":checked"))
+    working_hours += "Nedelja: ne radi";
+   else
+    working_hours += "Nedelja: " + $("#select_hours_from_sunday").val() + " - " + $("#select_hours_to_sunday").val();
   
-  $("#user_working_hours").val(working_hours);
-    
-               
+   $("#result").text(working_hours);
+   $("#user_working_hours").val(working_hours);
+  }
+  else {
+   var working_hours = "Ponedeljak-petak: " + $("#select_hours_from").val() + " - " + $("#select_hours_to").val() + " i " 
+                     + $("#twice_select_hours_from").val() + " - " + $("#twice_select_hours_to").val() +";"
+                     + "Subota: " + $("#select_hours_from_saturday").val() + " - " + $("#select_hours_to_saturday").val() + " i " 
+                     + $("#twice_select_hours_from_saturday").val() + " - " + $("#twice_select_hours_to_saturday").val()+ ";";
+                   
+   if($("#no_work").is(":checked"))
+    working_hours += "Nedelja: ne radi";
+   else
+    working_hours += "Nedelja: " + $("#select_hours_from_sunday").val() + " - " + $("#select_hours_to_sunday").val() + " i " 
+                     + $("#twice_select_hours_from_sunday").val() + " - " + $("#twice_select_hours_to_sunday").val();
+  
+   $("#result").text(working_hours);
+   $("#user_working_hours").val(working_hours);
+  }
 });
 
+/************** Dvokratno radno vreme ****************/
+
+$("#twice_working_hours").click(function() {
+ if($(this).val() == "Dvokratno") {
+  $(".twice").show();
+  $(this).val("Jednokratno");
+ }
+ else {
+  $(".twice").hide();
+  $(this).val("Dvokratno");
+ }
+});
 
 
 });

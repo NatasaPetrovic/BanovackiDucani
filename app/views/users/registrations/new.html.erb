@@ -1,10 +1,11 @@
 <%= bootstrap_devise_error_messages! %>
+
 <div class="col-md-6 licniPodaci">
   <div class="panel-heading">
     <h4><%= t('.sign_up', :default => "Sign up") %></h4>
   </div>
   <div class="panel-body">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { multipart: true, role: "form" }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), remote:true, html: { multipart: true, role: "form" }) do |f| %>
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
@@ -31,60 +32,122 @@
         <input type="radio" id="not_fixed" name="fixed" value="not_fixed" checked>Nije fiksno<br/>
         <input type="radio" id="fixed" name="fixed" value="fixed">Fiksno<br/>
         
-        <div id="working_hours">
-        <label>Radni dani od</label>
-        <select id="select_hours_from" class="form-control input-mini">
-           <%= javascript_include_tag "specific/form_working_hours.js" %>
-           <script type="text/javascript" >
-           $("#select_hours_from").working_hours(9);
+        <div id="working_hours" class="form-group">
+            
+            <!-- Radni dani -->
+            
+            <label id="weekdays">Radni dani od</label>
+            <select id="select_hours_from" class="form-control input-mini">
            
-           </script>
-        </select>
-           <span>do</span>
-           <select id="select_hours_to" class="form-control input-mini">
-           <script type="text/javascript" >
-            $("#select_hours_to").working_hours(21);
-           </script>
+               <script type="text/javascript" >
+                   $("#select_hours_from").working_hours(9);
            
-        </select> 
-        <br/><br/>
+               </script>
+            </select>
+            <span>do</span>
+            <select id="select_hours_to" class="form-control input-mini">
+               <script type="text/javascript" >
+                    $("#select_hours_to").working_hours(17);
+               </script>
+           
+            </select> 
         
-         <label>Subota od</label>
-        <select id="select_hours_from_saturday" class="form-control input-mini">
-           <%= javascript_include_tag "specific/form_working_hours.js" %>
-           <script type="text/javascript" >
-           $("#select_hours_from_saturday").working_hours(10);
-           
-           </script>
-        </select>
-           <span>do</span>
-           <select id="select_hours_to_saturday" class="form-control input-mini">
-           <script type="text/javascript" >
-            $("#select_hours_to_saturday").working_hours(18);
-           </script>
-           
-        </select> 
-        <br/><br/>
-        <label>Nedelja od</label>
-        <select id="select_hours_from_sunday" class="form-control input-mini">
-           <%= javascript_include_tag "specific/form_working_hours.js" %>
-           <script type="text/javascript" >
-           $("#select_hours_from_sunday").working_hours(10);
-           
-           </script>
-        </select>
-           <span>do</span>
-           <select id="select_hours_to_sunday" class="form-control input-mini">
-           <script type="text/javascript" >
-            $("#select_hours_to_sunday").working_hours(18);
-           </script>
-           
-        </select> 
         
-        <input id="no_work" type="checkbox">Ne radimo
+        
+            <!-- Dvokratno Radni dani -->
+            <span class="twice">od</span>
+                <select id="twice_select_hours_from" class="form-control input-mini twice">
+           
+                   <script type="text/javascript" >
+                       $("#twice_select_hours_from").working_hours(18);
+                   </script>
+                </select>
+                <span class="twice">do</span>
+                <select id="twice_select_hours_to" class="form-control input-mini twice ">
+                    <script type="text/javascript" >
+                        $("#twice_select_hours_to").working_hours(22);
+                    </script>
+                </select> 
+                <br/><br/>
+                <!-------------Radni dani kraj ------------------>
+        
+                <!-- Subota -->
+                <label>Subota od</label>
+                <select id="select_hours_from_saturday" class="form-control input-mini">
+               
+                    <script type="text/javascript" >
+                        $("#select_hours_from_saturday").working_hours(10);
+                    </script>
+                </select>
+                <span>do</span>
+                <select id="select_hours_to_saturday" class="form-control input-mini">
+                    <script type="text/javascript">
+                        $("#select_hours_to_saturday").working_hours(18);
+                    </script>
+                </select> 
+        
+                <!-- Subota dvokratno -->
+        
+                <label class="twice">od</label>
+                <select id="twice_select_hours_from_saturday" class="form-control input-mini twice">
+                    <script type="text/javascript" >
+                        $("#twice_select_hours_from_saturday").working_hours(18);
+                    </script>
+                </select>
+                <span class="twice">do</span>
+                <select id="twice_select_hours_to_saturday" class="form-control input-mini twice">
+                    <script type="text/javascript" >
+                        $("#twice_select_hours_to_saturday").working_hours(22);
+                    </script>
+                </select> 
+        
+                <!---------- Subota kraj ------------>
+                <br/><br/>
+        
+                <!-- Nedelja -->
+        
+                <label>Nedelja od</label>
+                <select id="select_hours_from_sunday" class="form-control input-mini">
+                    <script type="text/javascript" >
+                        $("#select_hours_from_sunday").working_hours(10);
+                    </script>
+                </select>
+                <span>do</span>
+                <select id="select_hours_to_sunday" class="form-control input-mini">
+                    <script type="text/javascript" >
+                        $("#select_hours_to_sunday").working_hours(18);
+                    </script>
+                </select> 
+                <!-- Nedelja dvokratno -->
+        
+                <label class="twice">od</label>
+                <select id="twice_select_hours_from_sunday" class="form-control input-mini twice">
+                    <script type="text/javascript">
+                        $("#twice_select_hours_from_sunday").working_hours(18);
+                    </script>
+                </select>
+                <span class="twice">do</span>
+                <select id="twice_select_hours_to_sunday" class="form-control input-mini twice">
+                    <script type="text/javascript" >
+                        $("#twice_select_hours_to_sunday").working_hours(22);
+                    </script>
+                </select> 
+        
+        
+        
+                <!------------ Nedelja kraj ------------------>
+                <input id="no_work" type="checkbox">Ne radimo
+                <br/>
+                <input type="button" id="more_working_hours" value="+" class="btn btn-primary btn-circle" /> <!-- Dugme za vise opcija -->
+                <input type="button" id="twice_working_hours" value="Dvokratno" class="btn btn-primary btn-circle" /> <!-- Dugme za dvokratno radno vreme -->
+                <div id="result">
+                </div>
+        
+                <br/>
+                <input type="button" id="save_working_hours" value="Sačuvaj" class="btn btn-primary" />
        </div>
-        
-        <%= f.hidden_field :working_hours %>
+       
+       <%= f.hidden_field :working_hours %>
       </div>
        
       <div class="form-group">
