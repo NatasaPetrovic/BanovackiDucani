@@ -1,10 +1,10 @@
-<div class="container">
-
- <%= render "layouts/navigation" %>
- 
-  <div class="row" id="search">
-              <%= form_tag("/welcome/results", method: "get") do %>
-                   <div class="col-lg-11 col-xs-12">
+	<header class="jumbotron bg-inverse text-xs-center center-vertically" role="banner">
+          <div id="jumbo" class="container" >
+             
+          <%= render "layouts/navigation" %>
+            <div class="row" id="search">
+          <%= form_tag("/welcome/results", method: "get") do %>
+                   <div class="col-lg-12 col-xs-12">
                        <div class="input-group input-group-lg">
                         <%= text_field_tag :search,params[:search], :class => "form-control"%>
                           <span class="input-group-btn">
@@ -13,11 +13,54 @@
                         </div><!-- /input-group --> 
                    </div>
               <%end%>
-           </div>
+              
+      </div>
+          <a id="anchor" href="#main"><span id="menu-down" class="glyphicon glyphicon-menu-down"></span></a>
+        </header>
+
+
+<div class="container">
+
+ 
+ <div class="row">
+<div class="panel panel-default col-lg-5 col-lg-offset-1">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Freemium</div>
+  <div class="panel-body">
+    <p>...</p>
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+<div class="panel panel-default col-lg-5 col-lg-offset-1">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Premium</div>
+  <div class="panel-body">
+    <p>...</p>
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+             
+       
 
             <!--BOTTOM BUTTONS-->
             
-            <div class="bottom">
+            <!--<div class="bottom">
                 <div class="row" >
 
                 <%= link_to new_user_registration_path(:kind => 'free')  do %>
@@ -39,6 +82,6 @@
 
                 </div>
             </div>
-            
+            -->
             
        </div>

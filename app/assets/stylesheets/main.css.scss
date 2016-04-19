@@ -2,16 +2,26 @@
 html, body {
     height: 100%;
     /*background:radial-gradient( circle, rgba(0, 0, 0, -0.4), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7) ),url(Images/jumbo.jpg);*/
-    background:url(jumbo.jpg);
+   /* background:url(jumbo.jpg);
     background-repeat: no-repeat;
     background-size: cover; 
-    background-attachment: fixed;
+    background-attachment: fixed;*/
     margin-bottom: 0;
     font-family: Century Gothic, serif;
     color: antiquewhite !Important;
     //text-shadow: 2px 2px #404040;
     }
-
+.jumbotron {
+    background-image: url("back.jpg");
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: left;
+    padding:0 !important;
+    
+     /*filter:   brightness(1) sepia(0.2) hue-rotate(90deg);
+    -webkit-filter:   sepia(1) contrast(1.2)hue-rotate(180deg);*/
+}
 @media (min-width: 768px){ /*Aligns navbar left with navbar right*/
 .navbar-nav>li>a {
      padding-top: 20px;}
@@ -35,11 +45,11 @@ html, body {
 }
 @media screen and (min-height:801px) {
     #search {
-        margin-top:40%;
+       /* margin-top:40%;*/
         width: 70%;
         margin-left:auto;
         margin-right: auto;
-        padding: 50px 60px;
+        padding: 6px 60px;
 }
 }
 
@@ -66,7 +76,7 @@ html, body {
 @media screen and (max-width:970px) and (min-width:769px) /*SMALL SCREENS_______________________*/
 {
     #search {
-        width:80%;
+       /* width:80%;*/
         padding: 40px 20px;
     }
     .inner {
@@ -107,7 +117,7 @@ html, body {
  
     .input-group {
     
-    width:110%;
+    width:90%;
     right:0px;
     }
     .inner {
@@ -154,13 +164,28 @@ html, body {
     z-index: 1;
     font-size: 20px;
 }
+
+
 /*SEARCH------------------------------*/
 #search {
-    height: 10%;
-    background: rgba(0,0,0,.60);
+    /*height: 10%;*/
+    background: rgba(255,255,255,.7);
     border-radius:5px;
     text-align:center;
     z-index:1;
+}
+
+.input-group-btn:last-child>.btn {
+    margin-left:-305px;
+    z-index:2;
+}
+
+
+.input-group {
+    display:grid;
+    margin-top:5%;
+    margin-left:15%;
+    margin-bottom:5%;
 }
 
 
@@ -173,7 +198,10 @@ input {
   /*  background: antiquewhite !important;*/
     
 }
-.btn {background: antiquewhite;} 
+.btn {
+    background: rgba(197,220,68,1);
+    color:white;
+} 
 
 /*BOTTOM BUTTONS-------------------*/
 .bottom-buttons {
@@ -402,5 +430,11 @@ ol > li::before {
     width: 100px;
     display: inline;
 }
-
+.panel {
+    color: grey;
+    padding:0;
+}
+.panel-heading {
+    background-color: rgba(197,220,68,1) !important;
+}
 
